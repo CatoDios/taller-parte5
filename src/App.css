@@ -1,0 +1,82 @@
+
+.table {
+  border-collapse: collapse;/*juntamos los border por td y la tabla en si en uno solo*/
+  width: 100%;
+  border: 3px solid WHITE;
+  border-radius: 5px;
+}
+.th{
+height: 30px;
+text-align: center;/*Alineamos el texto al centro ---th por defecto esta alineado al centro*/
+ /* vertical-align: bottom; Alineamos el texto verticalmente hacia abajo*/
+padding: 1px;
+background-color:lightblue;
+color: white;
+border: 3px solid WHITE;
+border-radius: 8px;
+/*border-bottom: 1px solid #ddd;para borde solo horizontal*/
+}
+.td{
+  height: 30px;
+  text-align: center;/*Alineamos el texto al centro ---th por defecto esta alineado al centro*/
+   /* vertical-align: bottom; Alineamos el texto verticalmente hacia abajo*/
+  padding: 1px;
+  border: 3px solid WHITE;
+  /*border-bottom: 1px solid #ddd;para borde solo horizontal*/
+  }
+
+
+.th:hover {background-color: #215c75}/*selector de <tr> para resaltar filas,encabezados de la tabla en el mouse:*/
+.tr:nth-child(even) {background-color: white}
+
+input{
+    width: 130px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid lightblue;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-position: 2px 10px; 
+    background-repeat: no-repeat;
+}
+
+label {
+  display: inline-block;
+  margin: .5em 0;
+  color: black;
+  font-weight: bold;
+  text-align:left;
+  font-family: 'Times New Roman', Times, serif;
+  width: 90px;
+}
+button {
+  margin-top: 20px;
+  font-family: Arial;
+  background-color: #215c75;
+  color:white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 9px;
+  cursor: pointer; cursor: hand;
+  width:140px;
+  font-size: 18px;
+}
+button:hover {
+  color: black;
+  background-color:lightblue ;
+}
+
+h3{
+  background-color: lightblue;
+  color: black;
+	padding: 12px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+  width : 50%;
+  margin: 0 auto;
+  width:100%;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}

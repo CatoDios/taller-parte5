@@ -1,63 +1,70 @@
 import React from 'react'
-import AlumnoList from './Alumno-list'
+import PagoList from './Pago-list'
 import TableHeader from './Table-Header'
-import Buscar from './Buscar'
-import Select from './Select'
+import Alumno from './Alumno'
+import ConceptoList from './Concepto-list'
 import '../App.css';
 
 class App extends React.Component {
   
    constructor(props) {
     super(props)
-    this.state = { alumnos: [] }
-    this.codigo='';
-    this.FiltrarCodigo = this.FiltrarCodigo.bind(this);
+    this.state = { pagos: [] }
+    this.conceptos = []
+    this.alumno=''
   }
  
   componentWillMount() {
-    fetch('https://modulo-alumno-zuul.herokuapp.com/modulo-alumno-client/pago/listarPagos')
+    fetch('https://modulo-alumno-zuul.herokuapp.com/modulo-alumno-client/pago/listar/Juan/Eneque/Pisfil')
       .then((response) => {
         return response.json()
       })
-      .then((alumnos) => {
-        this.setState({ alumnos: alumnos })
+      .then((pagos) => {
+        this.setState({ pagos: pagos })
+      })
+      fetch('https://modulo-alumno-zuul.herokuapp.com/modulo-alumno-client/concepto/leer/Juan/Eneque/Pisfil')
+      .then((response) => {
+        return response.json()
+      })
+      .then((conceptos) => {
+        this.conceptos = conceptos
       })
   }
   
 
   render() {
-    if (this.state.alumnos.length > 0) {
+    if (this.state.pagos.length > 0) {
       return (
         <div className="container-fluid">
-          <h3>Estado de pagos</h3>
+          <h3>Estado de pagos por alumno</h3>
           <hr/>
-          <p><Select/></p>
-          <Buscar codigo = {this.FiltrarCodigo} />
-          <br/>
+          <Alumno alumno = {this.state.pagos[0].alumno}/>
+          <hr/>
+          <h2>Conceptos</h2>
+          <ul><ConceptoList listado={this.conceptos}/></ul>
           <br/>
         <table className="table">
             <TableHeader/>
-            <AlumnoList listado={this.state.alumnos} />
+            <PagoList listado={this.state.pagos} />
         </table>
         </div>
-        
       )
     } else {
-      return <p className="text-center">Cargando Alumnos estado de pagos...</p>
+      return <p className="text-center">Cargando Estado de pagos de alumno</p>
     }
   }
-
+/*
   FiltrarCodigo(codigo) {
     
     fetch('https://modulo-alumno-zuul.herokuapp.com/modulo-alumno-client/pago/listar/'+ codigo)
       .then((response) => {
         return response.json()
       })
-      .then((alumnos) => {
-        this.setState({ alumnos: alumnos })
+      .then((pagos) => {
+        this.setState({ pagos: pagos })
       })
 
-/*
+
     let id = codigo;
     var alumnosfiltrados = this.state.alumnos.filter((alumno) => alumno.alumno.idAlumno === id)
     console.log(alumnosfiltrados);
@@ -75,8 +82,8 @@ class App extends React.Component {
       }
     }
     this.solicitudesfiltradas = greaterTen;
-    console.log(this.solicitudesfiltradas);*/
-  }
+    console.log(this.solicitudesfiltradas);
+  }*/
   
 
 }

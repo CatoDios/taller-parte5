@@ -29,10 +29,13 @@ class NumeroRecibo extends React.Component {
         //console.log(listaAgregados);
         if(!(lista.length>0)){
               listaAgregados.push(this.state.numero);
+        }else{
+          alert("el numero de voucher ya ha sido ingresado");
         }
         this.setState({
-            listaNumeros: listaAgregados
+            listaNumeros: listaAgregados,
           })
+        this.state.numero='';
         e.preventDefault();
         this.Buscar(e);
         

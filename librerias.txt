@@ -1,2 +1,0 @@
-npm i jspdf --save
-npm install jspdf-autotable --save
